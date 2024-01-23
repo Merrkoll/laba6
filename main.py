@@ -74,7 +74,28 @@ def create_spec():
     return Spec(name)
 
 def create_student():
-    return
+    while True:
+        surname = input("Введите фамилию студента: ")
+        if surname.isalpha():
+            break
+        else:
+            print("Ошибка. Фамилия должна состоять из букв. Введите корректную фамилию. ")
+
+    while True:
+        name = input("Введите имя cтудента: ")
+        if name.isalpha():
+            break
+        else:
+            print("Ошибка. Имя должно состоять из букв. Введите корректное имя. ")
+
+    while True:
+        age = input("Введите возраст студента: ")
+        try:
+            age = int(age)
+            break
+        except ValueError:
+            print("Ошибка: Возраст должен быть числом. Попробуйте снова.")
+    return Student(name, surname, age)
 
 
 def menu():
