@@ -21,12 +21,18 @@ class Student:
 
 
 class Spec:
-    def __init__(self):
-        return
+    def __init__(self, name):
+        self.__name = name
+
+    @property
+    def name(self):
+        return self.__name
 
     def __str__(self):
-        return
+        return f"{self.name}"
 
+    def __repr__(self):
+        return f"{self.name}"
 
 
 class Kurs:
