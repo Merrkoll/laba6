@@ -66,8 +66,8 @@ class Kurs:
 
 
 def create_kurs():
-    return
-
+    namekurs = input("Введите номер курса: ")
+    return Kurs(namekurs)
 
 def create_spec():
     return
