@@ -1,3 +1,8 @@
+kurs_obj = []
+student_obj = []
+specs = []
+
+
 class Student:
     def __init__(self, name, surname, age):
         self.__name = name
@@ -19,11 +24,9 @@ class Student:
     def __str__(self):
         return f"{self.name} {self.surname}, Возраст: {self.age}"
 
-
 class Spec:
     def __init__(self, name):
         self.__name = name
-
     @property
     def name(self):
         return self.__name
@@ -35,12 +38,12 @@ class Spec:
         return f"{self.name}"
 
 
+
 class Kurs:
     def __init__(self, namekurs):
         self.__namekurs = namekurs
-        self.__specs = []
+        self.__specs= []
         self.__students = []
-
     @property
     def namekurs(self):
         return self.__namekurs
@@ -52,7 +55,6 @@ class Kurs:
     @property
     def students(self):
         return self.__students
-
     def make_specs(self, specs):
         self.specs.append(specs)
 
@@ -69,9 +71,11 @@ def create_kurs():
     namekurs = input("Введите номер курса: ")
     return Kurs(namekurs)
 
+
 def create_spec():
     name = input("Введите название специальности: ")
     return Spec(name)
+
 
 def create_student():
     while True:
@@ -113,21 +117,58 @@ def menu():
         choose = input("Выберите пункт меню: ")
 
         if choose == "1":
-            pass
+            kurs_obj = create_kurs()
+            print("Курс создан.")
+            input("Нажмите Enter, чтобы продолжить...")
+
         elif choose == "2":
-            pass
+            if kurs_obj != None:
+                spec_obj = create_spec()
+                kurs_obj.make_specs(spec_obj)
+                print("Специальность создана.")
+            else:
+                print("Сначала создайте курс.")
+            input("Нажмите Enter, чтобы продолжить...")
+
         elif choose == "3":
-            pass
+            if kurs_obj != None:
+                student_obj = create_student()
+                kurs_obj.make_student(student_obj)
+                print("Студент создан.")
+            else:
+                print("Сначала создайте курс.")
+            input("Нажмите Enter, чтобы продолжить...")
+
         elif choose == "4":
-            pass
+            if kurs_obj and kurs_obj.students:
+                for i, student in enumerate(kurs_obj.students, start=1):
+                    print(f"{i}. {student}")
+            else:
+                print("Нет студентов или курс не создан.")
+            input("Нажмите Enter, чтобы продолжить...")
+
         elif choose == "5":
-           pass
+            if kurs_obj and kurs_obj.specs:
+                for i, spec in enumerate(kurs_obj.specs, start=1):
+                    print(f"{i}. {spec}")
+            else:
+                print("Нет специальностей или курс не создан.")
+            input("Нажмите Enter, чтобы продолжить...")
+
         elif choose == "6":
-            pass
+            if kurs_obj:
+                print(kurs_obj)
+            else:
+                print("Курс не создан.")
+            input("Нажмите Enter, чтобы продолжить...")
+
         elif choose == "7":
-            pass
+            print("Выход из программы.")
+            break
+
         else:
-            pass
+            print("Некорректный выбор. Пожалуйста, выберите снова.")
+
 
 if __name__ == "__main__":
  menu()
