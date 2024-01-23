@@ -36,11 +36,33 @@ class Spec:
 
 
 class Kurs:
-    def __init__(self):
-        return
+    def __init__(self, namekurs):
+        self.__namekurs = namekurs
+        self.__specs = []
+        self.__students = []
+
+    @property
+    def namekurs(self):
+        return self.__namekurs
+
+    @property
+    def specs(self):
+        return self.__specs
+
+    @property
+    def students(self):
+        return self.__students
+
+    def make_specs(self, specs):
+        self.specs.append(specs)
+
+    def make_student(self, student):
+        self.students.append(student)
 
     def __str__(self):
-        return
+        spec_str = f"Специальность: {self.specs}" if self.specs else "Специальность не объявлена"
+        students_str = "\n".join(str(student) for student in self.students)
+        return f"Курс: {self.namekurs}\n{spec_str}\nСтуденты:\n{students_str}"
 
 
 def create_kurs():
