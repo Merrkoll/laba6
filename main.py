@@ -1,9 +1,24 @@
 class Student:
-    def __init__(self):
-        return
+    def __init__(self, name, surname, age):
+        self.__name = name
+        self.__surname = surname
+        self.__age = age
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def surname(self):
+        return self.__surname
+
+    @property
+    def age(self):
+        return self.__age
 
     def __str__(self):
-        return
+        return f"{self.name} {self.surname}, Возраст: {self.age}"
+
 
 class Spec:
     def __init__(self):
