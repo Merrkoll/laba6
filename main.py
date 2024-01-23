@@ -70,7 +70,8 @@ def create_kurs():
     return Kurs(namekurs)
 
 def create_spec():
-    return
+    name = input("Введите название специальности: ")
+    return Spec(name)
 
 def create_student():
     return
