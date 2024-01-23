@@ -5,79 +5,98 @@ specs = []
 
 class Student:
     def __init__(self, name, surname, age):
+        """Инициализация атрибутов класса"""
         self.__name = name
         self.__surname = surname
         self.__age = age
 
     @property
     def name(self):
+        """Уровень доступности атрибута"""
         return self.__name
 
     @property
     def surname(self):
+        """Уровень доступности атрибута"""
         return self.__surname
 
     @property
     def age(self):
+        """Уровень доступности атрибута"""
         return self.__age
 
     def __str__(self):
+        """Вывод информации об объекте"""
         return f"{self.name} {self.surname}, Возраст: {self.age}"
 
 class Spec:
     def __init__(self, name):
+        """Инициализация атрибутов класса"""
         self.__name = name
     @property
     def name(self):
+        """Уровень доступности атрибута"""
         return self.__name
 
     def __str__(self):
+        """Вывод информации об объекте"""
         return f"{self.name}"
 
     def __repr__(self):
+        """Вывод информации об объекте"""
         return f"{self.name}"
 
 
 
 class Kurs:
     def __init__(self, namekurs):
+        """Инициализация атрибутов класса"""
         self.__namekurs = namekurs
         self.__specs= []
         self.__students = []
     @property
     def namekurs(self):
+        """Уровень доступности атрибута"""
         return self.__namekurs
 
     @property
     def specs(self):
+        """Уровень доступности атрибута"""
         return self.__specs
 
     @property
     def students(self):
+        """Уровень доступности атрибута"""
         return self.__students
     def make_specs(self, specs):
+        """Добавляет специализацию в курс."""
         self.specs.append(specs)
 
     def make_student(self, student):
+        """Добавляет студента в курс."""
         self.students.append(student)
 
     def __str__(self):
+        """Вывод информации об объекте"""
         spec_str = f"Специальность: {self.specs}" if self.specs else "Специальность не объявлена"
         students_str = "\n".join(str(student) for student in self.students)
         return f"Курс: {self.namekurs}\n{spec_str}\nСтуденты:\n{students_str}"
 
 
 def create_kurs():
+    """"Создает курс, запрашивая его номер"""
     namekurs = input("Введите номер курса: ")
     return Kurs(namekurs)
 
 
 def create_spec():
+    """"Создаёт специализацию, заправшивая её название"""
     name = input("Введите название специальности: ")
     return Spec(name)
 
 
 def create_student():
+    """"Создаёт студента, запрашивая его фамилию имя и возраст"""
     while True:
         surname = input("Введите фамилию студента: ")
         if surname.isalpha():
@@ -103,6 +122,7 @@ def create_student():
 
 
 def menu():
+    """Отображает меню и предоставляет пользователю опции для взаимодействия с программой."""
     kurs_obj = None
     while True:
         print("Главное меню:")
